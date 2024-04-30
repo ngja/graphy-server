@@ -1,9 +1,11 @@
+-- 기본 테이블
 create table person
 (
     id         serial primary key,
     surname    varchar(100) not null,
     given_name varchar(100) not null,
     gender     varchar(10)  not null,
+    birthday   timestamp    null,
     created_at timestamp    not null,
     updated_at timestamp    not null
 );
@@ -41,30 +43,14 @@ create table person_nationality
 
 create table member
 (
-    id         serial primary key,
-    stage_name varchar(100) not null,
-    artist_id  integer      not null,
-    start_date timestamp    null,
-    end_date   timestamp    null,
-    created_at timestamp    not null,
-    updated_at timestamp    not null
-);
-
-create table member_position
-(
-    id          serial primary key,
-    member_id   integer   not null,
-    position_id integer   not null,
-    created_at  timestamp not null,
-    updated_at  timestamp not null
-);
-
-create table position
-(
-    id         serial primary key,
-    name       varchar(100) not null,
-    created_at timestamp    not null,
-    updated_at timestamp    not null
+    id             serial primary key,
+    stage_name     varchar(100) not null,
+    person_id      integer      not null,
+    artist_id      integer      not null,
+    start_datetime timestamp    null,
+    end_datetime   timestamp    null,
+    created_at     timestamp    not null,
+    updated_at     timestamp    not null
 );
 
 create table artist
@@ -77,51 +63,43 @@ create table artist
 
 create table artist_nationality
 (
-    id         serial primary key,
-    artist_id  integer   not null,
-    country_id integer   not null,
-    created_at timestamp not null,
-    updated_at timestamp not null
+    id             serial primary key,
+    artist_id      integer   not null,
+    country_id     integer   not null,
+    start_datetime timestamp null,
+    end_datetime   timestamp null,
+    created_at     timestamp not null,
+    updated_at     timestamp not null
 );
 
 create table record
 (
-    id         serial primary key,
-    created_at timestamp not null,
-    updated_at timestamp not null
+    id               serial primary key,
+    artist_id        integer      not null,
+    country_id       integer      null,
+    name             varchar(100) not null,
+    release_datetime timestamp    null,
+    created_at       timestamp    not null,
+    updated_at       timestamp    not null
+);
+
+create table record_song
+(
+    id          serial primary key,
+    record_id   integer       not null,
+    song_id     integer       not null,
+    track       integer       null,
+    description varchar(2000) null,
+    created_at  timestamp     not null,
+    updated_at  timestamp     not null
 );
 
 create table song
 (
-    id         serial primary key,
-    created_at timestamp not null,
-    updated_at timestamp not null
-);
-
-create table song_featuring
-(
-    id         serial primary key,
-    created_at timestamp not null,
-    updated_at timestamp not null
-);
-
-create table song_composer
-(
-    id         serial primary key,
-    created_at timestamp not null,
-    updated_at timestamp not null
-);
-
-create table song_lyricist
-(
-    id         serial primary key,
-    created_at timestamp not null,
-    updated_at timestamp not null
-);
-
-create table song_arranger
-(
-    id         serial primary key,
-    created_at timestamp not null,
-    updated_at timestamp not null
+    id               serial primary key,
+    name             varchar(100) not null,
+    release_datetime timestamp    null,
+    duration         integer      null,
+    created_at       timestamp    not null,
+    updated_at       timestamp    not null
 );
