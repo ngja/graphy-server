@@ -2,6 +2,9 @@ package com.hansol.graphyserver.common.dto
 
 data class GraphyCommonResponse<T>(
 
-    val result: T? = null,
-    val message: String? = null
+    val data: T? = null,
+    val message: String? = null,
+    val page: Int? = null,
+    val size: Int? = null,
+    val more: Boolean? = null,
 )
