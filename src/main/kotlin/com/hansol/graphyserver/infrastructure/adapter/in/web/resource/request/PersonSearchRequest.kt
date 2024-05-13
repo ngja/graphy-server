@@ -1,17 +1,17 @@
 package com.hansol.graphyserver.infrastructure.adapter.`in`.web.resource.request
 
-import com.hansol.graphyserver.application.person.domain.PersonSearchDomain
+import com.hansol.graphyserver.application.person.dto.PersonSearchCondition
 
 data class PersonSearchRequest(
     val ids: Collection<Long> = emptySet(),
-    val page: Int = 0,
+    val cursor: Long? = null,
     val size: Int = 20,
 ) {
-    fun toDomain(): PersonSearchDomain {
-        return PersonSearchDomain(
+    fun toCondition(): PersonSearchCondition {
+        return PersonSearchCondition(
             ids = ids,
-            page = page,
-            size = size,
+            cursor = cursor,
+            size = size.toLong(),
         )
     }
 }

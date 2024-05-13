@@ -2,6 +2,7 @@ package com.hansol.graphyserver.infrastructure.adapter.out.persistence.person
 
 import com.hansol.graphyserver.application.person.domain.PersonDomain
 import com.hansol.graphyserver.common.shared.Gender
+import com.hansol.graphyserver.infrastructure.adapter.out.persistence.person.adapter.PersonCreateAdapter
 import io.kotest.core.spec.style.FunSpec
 import io.kotest.extensions.spring.SpringExtension
 import io.kotest.matchers.longs.shouldBeGreaterThan

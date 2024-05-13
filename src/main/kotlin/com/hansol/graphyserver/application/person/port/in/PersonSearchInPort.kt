@@ -1,8 +1,8 @@
 package com.hansol.graphyserver.application.person.port.`in`
 
-import com.hansol.graphyserver.application.person.domain.PersonSearchDomain
-import com.hansol.graphyserver.common.dto.GraphySearchResult
+import com.hansol.graphyserver.application.person.domain.PersonDomain
+import com.hansol.graphyserver.application.person.dto.PersonSearchCondition
 
 interface PersonSearchInPort {
-    fun search(personSearchDomain: PersonSearchDomain): GraphySearchResult<PersonSearchDomain>
+    fun search(personSearchCondition: PersonSearchCondition): List<PersonDomain>
 }

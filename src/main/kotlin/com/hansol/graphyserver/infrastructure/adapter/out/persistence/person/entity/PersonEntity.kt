@@ -1,4 +1,4 @@
-package com.hansol.graphyserver.infrastructure.adapter.out.persistence.person
+package com.hansol.graphyserver.infrastructure.adapter.out.persistence.person.entity
 
 import com.hansol.graphyserver.application.person.domain.PersonDomain
 import com.hansol.graphyserver.common.shared.Gender

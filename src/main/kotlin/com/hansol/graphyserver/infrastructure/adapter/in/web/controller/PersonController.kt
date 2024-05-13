@@ -27,12 +27,12 @@ class PersonController(
 
     @GetMapping("/person")
     fun search(personSearchRequest: PersonSearchRequest): GraphyCommonResponse<List<PersonSearchResponse>> {
-        val results = personSearchInPort.search(personSearchRequest.toDomain())
+        val results = personSearchInPort.search(personSearchRequest.toCondition())
         return GraphyCommonResponse(
-            data = results.results.map { PersonSearchResponse.fromDomain(it) },
-            page = results.page,
+            data = results.map { PersonSearchResponse.fromDomain(it) },
+            nextCursor = results.lastOrNull()?.id,
             size = results.size,
-            more = results.more
+            more = results.isNotEmpty(),
         )
     }
 }

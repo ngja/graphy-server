@@ -1,19 +1,19 @@
 package com.hansol.graphyserver.infrastructure.adapter.`in`.web.resource.response
 
-import com.hansol.graphyserver.application.person.domain.PersonSearchDomain
+import com.hansol.graphyserver.application.person.domain.PersonDomain
 import java.time.LocalDate
 
 data class PersonSearchResponse(
     val surname: String,
     val givenName: String,
-    val birthday: LocalDate,
+    val birthday: LocalDate?,
 ) {
     companion object {
-        fun fromDomain(personSearchDomain: PersonSearchDomain): PersonSearchResponse {
+        fun fromDomain(personDomain: PersonDomain): PersonSearchResponse {
             return PersonSearchResponse(
-                surname = "",
-                givenName = "",
-                birthday = LocalDate.now(),
+                surname = personDomain.surname,
+                givenName = personDomain.givenName,
+                birthday = personDomain.birthday?.toLocalDate(),
             )
         }
     }
