@@ -10,7 +10,7 @@ class PersonCreateService(
     private val personCreateOutPort: PersonCreateOutPort,
 ) : PersonCreateInPort {
 
-    override fun create(personDomain: PersonDomain): PersonDomain {
-        return personCreateOutPort.create(personDomain)
+    override fun createPersons(personDomains: Collection<PersonDomain>): List<PersonDomain> {
+        return personCreateOutPort.createPersons(personDomains)
     }
 }

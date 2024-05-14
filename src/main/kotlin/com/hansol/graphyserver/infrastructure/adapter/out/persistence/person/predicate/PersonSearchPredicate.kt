@@ -10,7 +10,7 @@ class PersonSearchPredicate {
         val qPersonEntity: QPersonEntity = QPersonEntity.personEntity
         val booleanBuilder = BooleanBuilder()
         personSearchCondition.ids?.let { booleanBuilder.and(qPersonEntity.id.`in`(personSearchCondition.ids)) }
-        personSearchCondition.cursor?.let { booleanBuilder.and(qPersonEntity.id.gt(personSearchCondition.cursor)) }
+        personSearchCondition.cursor?.let { booleanBuilder.and(qPersonEntity.id.lt(personSearchCondition.cursor)) }
         return booleanBuilder
     }
 }

@@ -26,6 +26,7 @@ dependencies {
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("com.github.f4b6a3:tsid-creator:5.2.6")
+    implementation ("io.github.oshai:kotlin-logging-jvm:6.0.9")
     runtimeOnly("org.postgresql:postgresql")
     implementation("com.querydsl:querydsl-jpa:5.1.0:jakarta")
     kapt("com.querydsl:querydsl-apt:5.1.0:jakarta")

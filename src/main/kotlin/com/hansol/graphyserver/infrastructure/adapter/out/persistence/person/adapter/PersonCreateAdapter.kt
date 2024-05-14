@@ -12,9 +12,14 @@ class PersonCreateAdapter(
     private val personRepository: PersonRepository,
 ) : PersonCreateOutPort {
     @Transactional
-    override fun create(personDomain: PersonDomain): PersonDomain {
+    fun createPerson(personDomain: PersonDomain): PersonDomain {
         val personEntity = PersonEntity.fromDomain(personDomain)
         val savedEntity = personRepository.save(personEntity)
         return savedEntity.toDomain()
+    }
+
+    @Transactional
+    override fun createPersons(personDomains: Collection<PersonDomain>): List<PersonDomain> {
+        return personDomains.map { createPerson(it) }
     }
 }

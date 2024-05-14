@@ -21,7 +21,7 @@ class PersonCreateAdapterTest(
     test("create") {
         val birthday = LocalDateTime.of(2024, 4, 30, 0, 0)
         val personDomain = PersonDomain(surname = "", givenName = "", gender = Gender.MALE, birthday = birthday)
-        val result = personCreateAdapter.create(personDomain)
+        val result = personCreateAdapter.createPersons(personDomain)
         result.id shouldBeGreaterThan 0L
     }
 })

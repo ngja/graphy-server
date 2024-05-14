@@ -7,26 +7,33 @@ import com.hansol.graphyserver.infrastructure.adapter.`in`.web.resource.request.
 import com.hansol.graphyserver.infrastructure.adapter.`in`.web.resource.request.PersonSearchRequest
 import com.hansol.graphyserver.infrastructure.adapter.`in`.web.resource.response.PersonCreateApiResponse
 import com.hansol.graphyserver.infrastructure.adapter.`in`.web.resource.response.PersonSearchResponse
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 
 @RestController
+@RequestMapping("/api")
 class PersonController(
     private val personCreateInPort: PersonCreateInPort,
     private val personSearchInPort: PersonSearchInPort,
 ) {
 
     @PostMapping("/person")
-    fun create(personCreateApiRequest: PersonCreateApiRequest): GraphyCommonResponse<PersonCreateApiResponse> {
-        val personDomain = personCreateInPort.create(personCreateApiRequest.toDomain())
+    fun createPerson(@RequestBody personCreateApiRequest: PersonCreateApiRequest): GraphyCommonResponse<PersonCreateApiResponse> {
+        val personDomains = personCreateInPort.createPersons(listOf(personCreateApiRequest.toDomain()))
         return GraphyCommonResponse(
-            data = PersonCreateApiResponse.fromDomain(personDomain)
+            data = PersonCreateApiResponse.fromDomain(personDomains.first())
         )
     }
 
-    @GetMapping("/person")
-    fun search(personSearchRequest: PersonSearchRequest): GraphyCommonResponse<List<PersonSearchResponse>> {
+    @PostMapping("/persons")
+    fun createPersons(@RequestBody personCreateApiRequests: List<PersonCreateApiRequest>): GraphyCommonResponse<List<PersonCreateApiResponse>> {
+        val personDomains = personCreateInPort.createPersons(personCreateApiRequests.map { it.toDomain() })
+        return GraphyCommonResponse(
+            data = personDomains.map { PersonCreateApiResponse.fromDomain(it) }
+        )
+    }
+
+    @GetMapping("/persons")
+    fun search(@RequestBody personSearchRequest: PersonSearchRequest): GraphyCommonResponse<List<PersonSearchResponse>> {
         val results = personSearchInPort.search(personSearchRequest.toCondition())
         return GraphyCommonResponse(
             data = results.map { PersonSearchResponse.fromDomain(it) },
