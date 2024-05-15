@@ -6,8 +6,8 @@ import com.hansol.graphyserver.infrastructure.common.entity.BaseEntity
 import jakarta.persistence.*
 import java.time.LocalDateTime
 
-@Table(name = "person")
 @Entity
+@Table(name = "person")
 class PersonEntity(
 
     @Id

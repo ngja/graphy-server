@@ -5,9 +5,9 @@ import com.hansol.graphyserver.application.person.port.out.PersonCreateOutPort
 import com.hansol.graphyserver.infrastructure.adapter.out.persistence.person.entity.PersonEntity
 import com.hansol.graphyserver.infrastructure.adapter.out.persistence.person.repository.PersonRepository
 import jakarta.transaction.Transactional
-import org.springframework.stereotype.Service
+import org.springframework.stereotype.Component
 
-@Service
+@Component
 class PersonCreateAdapter(
     private val personRepository: PersonRepository,
 ) : PersonCreateOutPort {
