@@ -7,9 +7,9 @@ import com.hansol.graphyserver.infrastructure.adapter.out.persistence.person.ent
 import com.hansol.graphyserver.infrastructure.adapter.out.persistence.person.predicate.PersonSearchPredicate
 import com.hansol.graphyserver.infrastructure.adapter.out.persistence.person.repository.PersonRepository
 import com.querydsl.jpa.impl.JPAQueryFactory
-import org.springframework.stereotype.Service
+import org.springframework.stereotype.Component
 
-@Service
+@Component
 class PersonSearchAdapter(
     private val personRepository: PersonRepository,
     private val jpaQueryFactory: JPAQueryFactory,

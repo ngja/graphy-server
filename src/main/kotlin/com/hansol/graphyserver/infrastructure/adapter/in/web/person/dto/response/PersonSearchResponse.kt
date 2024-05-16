@@ -1,4 +1,4 @@
-package com.hansol.graphyserver.infrastructure.adapter.`in`.web.resource.response
+package com.hansol.graphyserver.infrastructure.adapter.`in`.web.person.dto.response
 
 import com.hansol.graphyserver.application.person.domain.PersonDomain
 import java.time.LocalDate

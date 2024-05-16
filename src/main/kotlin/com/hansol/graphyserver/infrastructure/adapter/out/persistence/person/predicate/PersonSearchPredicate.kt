@@ -9,8 +9,12 @@ class PersonSearchPredicate {
     fun searchPredicate(personSearchCondition: PersonSearchCondition): Predicate {
         val qPersonEntity: QPersonEntity = QPersonEntity.personEntity
         val booleanBuilder = BooleanBuilder()
-        personSearchCondition.ids?.let { booleanBuilder.and(qPersonEntity.id.`in`(personSearchCondition.ids)) }
-        personSearchCondition.cursor?.let { booleanBuilder.and(qPersonEntity.id.lt(personSearchCondition.cursor)) }
+        personSearchCondition.cursor?.let {
+            booleanBuilder.and(qPersonEntity.id.lt(personSearchCondition.cursor))
+        }
+        personSearchCondition.ids?.let {
+            booleanBuilder.and(qPersonEntity.id.`in`(personSearchCondition.ids))
+        }
         return booleanBuilder
     }
 }

@@ -4,8 +4,8 @@ import com.hansol.graphyserver.application.person.domain.PersonDomain
 import com.hansol.graphyserver.application.person.port.out.PersonCreateOutPort
 import com.hansol.graphyserver.infrastructure.adapter.out.persistence.person.entity.PersonEntity
 import com.hansol.graphyserver.infrastructure.adapter.out.persistence.person.repository.PersonRepository
-import jakarta.transaction.Transactional
 import org.springframework.stereotype.Component
+import org.springframework.transaction.annotation.Transactional
 
 @Component
 class PersonCreateAdapter(

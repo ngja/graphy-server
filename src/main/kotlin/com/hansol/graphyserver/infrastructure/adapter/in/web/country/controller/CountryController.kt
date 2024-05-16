@@ -1,11 +1,11 @@
-package com.hansol.graphyserver.infrastructure.adapter.`in`.web.controller
+package com.hansol.graphyserver.infrastructure.adapter.`in`.web.country.controller
 
 import com.hansol.graphyserver.application.country.port.`in`.CountryCreateInPort
 import com.hansol.graphyserver.application.country.port.`in`.CountryFindInPort
 import com.hansol.graphyserver.common.dto.GraphyCommonResponse
-import com.hansol.graphyserver.infrastructure.adapter.`in`.web.resource.request.CountryCreateApiRequest
-import com.hansol.graphyserver.infrastructure.adapter.`in`.web.resource.response.CountryCreateApiResponse
-import com.hansol.graphyserver.infrastructure.adapter.`in`.web.resource.response.CountryFindResponse
+import com.hansol.graphyserver.infrastructure.adapter.`in`.web.country.dto.request.CountryCreateRequest
+import com.hansol.graphyserver.infrastructure.adapter.`in`.web.country.dto.response.CountryCreateResponse
+import com.hansol.graphyserver.infrastructure.adapter.`in`.web.country.dto.response.CountryFindResponse
 import org.springframework.web.bind.annotation.*
 
 @RestController
@@ -16,10 +16,10 @@ class CountryController(
 ) {
 
     @PostMapping("/countries")
-    fun createCountries(@RequestBody countryCreateApiRequests: List<CountryCreateApiRequest>): GraphyCommonResponse<List<CountryCreateApiResponse>> {
-        val countryDomains = countryCreateInPort.createCountries(countryCreateApiRequests.map { it.toDomain() })
+    fun createCountries(@RequestBody countryCreateRequests: List<CountryCreateRequest>): GraphyCommonResponse<List<CountryCreateResponse>> {
+        val countryDomains = countryCreateInPort.createCountries(countryCreateRequests.map { it.toDomain() })
         return GraphyCommonResponse(
-            data = countryDomains.map { CountryCreateApiResponse.fromDomain(it) }
+            data = countryDomains.map { CountryCreateResponse.fromDomain(it) }
         )
     }
 

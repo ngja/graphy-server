@@ -1,4 +1,4 @@
-package com.hansol.graphyserver.infrastructure.adapter.`in`.web.resource.request
+package com.hansol.graphyserver.infrastructure.adapter.`in`.web.person.dto.request
 
 import com.hansol.graphyserver.application.person.dto.PersonSearchCondition
 

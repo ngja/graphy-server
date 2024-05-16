@@ -1,8 +1,8 @@
-package com.hansol.graphyserver.infrastructure.adapter.`in`.web.resource.request
+package com.hansol.graphyserver.infrastructure.adapter.`in`.web.country.dto.request
 
 import com.hansol.graphyserver.application.country.domain.CountryDomain
 
-data class CountryCreateApiRequest(
+data class CountryCreateRequest(
     val name: String,
     val iso2: String,
     val iso3: String,

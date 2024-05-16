@@ -1,4 +1,4 @@
-package com.hansol.graphyserver.infrastructure.adapter.`in`.web.resource.response
+package com.hansol.graphyserver.infrastructure.adapter.`in`.web.country.dto.response
 
 import com.hansol.graphyserver.application.country.domain.CountryDomain
 
