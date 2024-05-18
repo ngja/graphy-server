@@ -6,7 +6,7 @@ import java.time.LocalDateTime
 class SongDomain(
     val id: Long = IdUtils.generateId(),
     val name: String,
-    val releaseDateTime: LocalDateTime,
+    val releaseDatetime: LocalDateTime,
     val duration: Int,
 ) {
 

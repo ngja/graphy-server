@@ -41,6 +41,8 @@ create table person_nationality
     updated_at timestamp    not null
 );
 
+CREATE INDEX idx_person_nationality_01 ON person_nationality (person_id);
+
 create table member
 (
     id             bigint primary key,
@@ -52,6 +54,9 @@ create table member
     created_at     timestamp    not null,
     updated_at     timestamp    not null
 );
+
+CREATE INDEX idx_member_01 ON member (person_id);
+CREATE INDEX idx_member_02 ON member (artist_id);
 
 create table artist
 (
@@ -71,6 +76,8 @@ create table artist_nationality
     created_at     timestamp not null,
     updated_at     timestamp not null
 );
+
+CREATE INDEX idx_artist_nationality_01 ON artist_nationality (artist_id);
 
 create table record
 (

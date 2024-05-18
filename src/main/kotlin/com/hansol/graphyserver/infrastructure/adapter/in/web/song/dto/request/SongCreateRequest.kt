@@ -11,7 +11,7 @@ data class SongCreateRequest(
     fun toDomain(): SongDomain {
         return SongDomain(
             name = this.name,
-            releaseDateTime = this.releaseDate.atStartOfDay(),
+            releaseDatetime = this.releaseDate.atStartOfDay(),
             duration = this.duration,
         )
     }

@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository
 
 @Repository
 interface CountryRepository : JpaRepository<CountryEntity, Long> {
+    fun findByIdIn(ids: Collection<Long>): List<CountryEntity>
 }

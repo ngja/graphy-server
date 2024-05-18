@@ -19,7 +19,7 @@ class SongEntity(
     val name: String,
 
     @Column(nullable = false)
-    val releaseDateTime: LocalDateTime,
+    val releaseDatetime: LocalDateTime,
 
     @Column(nullable = false)
     val duration: Int,
@@ -29,7 +29,7 @@ class SongEntity(
         return SongDomain(
             id = this.id,
             name = this.name,
-            releaseDateTime = this.releaseDateTime,
+            releaseDatetime = this.releaseDatetime,
             duration = this.duration,
         )
     }
@@ -39,7 +39,7 @@ class SongEntity(
             return SongEntity(
                 id = songDomain.id,
                 name = songDomain.name,
-                releaseDateTime = songDomain.releaseDateTime,
+                releaseDatetime = songDomain.releaseDatetime,
                 duration = songDomain.duration,
             )
         }

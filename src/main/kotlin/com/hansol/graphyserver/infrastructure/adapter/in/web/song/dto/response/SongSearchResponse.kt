@@ -15,7 +15,7 @@ data class SongSearchResponse(
             return SongSearchResponse(
                 id = songDomain.id,
                 name = songDomain.name,
-                releaseDate = songDomain.releaseDateTime.toLocalDate(),
+                releaseDate = songDomain.releaseDatetime.toLocalDate(),
                 duration = songDomain.duration,
             )
         }

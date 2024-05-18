@@ -16,10 +16,10 @@ class SongSearchPredicate {
             booleanBuilder.and(qSongEntity.name.containsIgnoreCase(songSearchCondition.nameKeyword))
         }
         songSearchCondition.releaseStartDate?.let {
-            booleanBuilder.and(qSongEntity.releaseDateTime.goe(songSearchCondition.releaseStartDate.atStartOfDay()))
+            booleanBuilder.and(qSongEntity.releaseDatetime.goe(songSearchCondition.releaseStartDate.atStartOfDay()))
         }
         songSearchCondition.releaseEndDate?.let {
-            booleanBuilder.and(qSongEntity.releaseDateTime.lt(songSearchCondition.releaseEndDate.plusDays(1L).atStartOfDay()))
+            booleanBuilder.and(qSongEntity.releaseDatetime.lt(songSearchCondition.releaseEndDate.plusDays(1L).atStartOfDay()))
         }
         return booleanBuilder
     }
