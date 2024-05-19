@@ -3,6 +3,7 @@ package com.hansol.graphyserver.infrastructure.adapter.out.persistence.artist.en
 import com.hansol.graphyserver.application.artist.domain.ArtistDomain
 import com.hansol.graphyserver.application.artist.domain.ArtistNationalityDomain
 import com.hansol.graphyserver.infrastructure.adapter.out.persistence.country.entity.CountryEntity
+import com.hansol.graphyserver.infrastructure.common.entity.BaseEntity
 import jakarta.persistence.*
 import java.time.LocalDateTime
 
@@ -32,7 +33,7 @@ class ArtistNationalityEntity(
      */
     @Column(name = "end_datetime")
     val endDatetime: LocalDateTime?,
-) {
+) : BaseEntity() {
 
     fun toDomain(): ArtistNationalityDomain {
         return ArtistNationalityDomain(

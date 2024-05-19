@@ -9,6 +9,7 @@ import com.hansol.graphyserver.infrastructure.adapter.out.persistence.artist.rep
 import com.hansol.graphyserver.infrastructure.adapter.out.persistence.artist.repository.ArtistRepository
 import com.hansol.graphyserver.infrastructure.adapter.out.persistence.artist.repository.MemberRepository
 import org.springframework.stereotype.Component
+import org.springframework.transaction.annotation.Transactional
 
 @Component
 class ArtistCreateAdapter(
@@ -16,6 +17,7 @@ class ArtistCreateAdapter(
     private val memberRepository: MemberRepository,
     private val artistNationalityRepository: ArtistNationalityRepository,
 ) : ArtistCreateOutPort {
+    @Transactional
     fun createArtist(artistDomain: ArtistDomain): ArtistDomain {
         val artistEntity = ArtistEntity.fromDomain(artistDomain)
         val memberEntities = MemberEntity.fromArtistDomain(artistDomain)
@@ -26,6 +28,7 @@ class ArtistCreateAdapter(
         return artistDomain
     }
 
+    @Transactional
     override fun createArtists(artistDomains: Collection<ArtistDomain>): List<ArtistDomain> {
         return artistDomains.map { createArtist(it) }
     }

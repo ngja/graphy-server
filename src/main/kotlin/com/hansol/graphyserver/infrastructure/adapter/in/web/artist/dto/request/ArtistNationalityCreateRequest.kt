@@ -1,18 +1,18 @@
 package com.hansol.graphyserver.infrastructure.adapter.`in`.web.artist.dto.request
 
 import com.hansol.graphyserver.application.artist.domain.ArtistNationalityCreateDomain
-import java.time.LocalDateTime
+import java.time.LocalDate
 
 data class ArtistNationalityCreateRequest(
     val countryId: Long,
-    val startDatetime: LocalDateTime?,
-    val endDatetime: LocalDateTime?,
+    val startDate: LocalDate?,
+    val endDate: LocalDate?,
 ) {
     fun toCreateDomain(): ArtistNationalityCreateDomain {
         return ArtistNationalityCreateDomain(
             countryId = countryId,
-            startDatetime = startDatetime,
-            endDatetime = endDatetime,
+            startDatetime = startDate?.atStartOfDay(),
+            endDatetime = endDate?.atStartOfDay(),
         )
     }
 }
